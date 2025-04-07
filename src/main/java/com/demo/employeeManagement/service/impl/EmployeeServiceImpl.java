@@ -26,13 +26,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    private final DepartmentRepository departmentRepository;
-
     private final EmployeeMapper employeeMapper = Mappers.getMapper(EmployeeMapper.class);
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, DepartmentRepository departmentRepository) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.departmentRepository = departmentRepository;
     }
 
     @Override
