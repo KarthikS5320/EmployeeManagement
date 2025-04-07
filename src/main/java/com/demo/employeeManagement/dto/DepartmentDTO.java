@@ -1,6 +1,5 @@
 package com.demo.employeeManagement.dto;
 
-import com.demo.employeeManagement.entity.Employee;
 import lombok.Getter;
 import lombok.Setter;
 

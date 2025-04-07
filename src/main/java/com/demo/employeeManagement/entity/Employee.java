@@ -18,6 +18,7 @@ public class Employee extends Auditable {
     @Column(name = "name")
     private String name;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
@@ -27,23 +28,24 @@ public class Employee extends Auditable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     @JsonIgnore
+    @Embedded
     private Address address;
 
     @Column(name = "role")
     private String role;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "joining_date")
     private Date joiningDate;
 
     @Column(name = "yearly_bonus_percentage")
     private Double yearlyBonusPercentage;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id")
     private Department department;
 
-    @ManyToOne
-    @JoinColumn(name = "reporting_manager_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id")
     private Employee reportingManager;
-
 }

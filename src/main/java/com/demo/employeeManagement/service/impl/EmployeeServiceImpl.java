@@ -26,18 +26,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    private final DepartmentRepository departmentRepository;
-
     private final EmployeeMapper employeeMapper = Mappers.getMapper(EmployeeMapper.class);
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, DepartmentRepository departmentRepository) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.departmentRepository = departmentRepository;
     }
 
     @Override
     public EmployeeDTO create(EmployeeDTO employeeDTO) {
-        Employee employee = employeeMapper.getEntityFromDTO(employeeDTO);
+        Employee employee = employeeMapper.dtoToEntity(employeeDTO);
         if (isDuplicateName(employeeDTO)) {
             throw new DuplicateDataException("Duplicated name");
         }
@@ -54,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 }
 
             }
-        return employeeMapper.getDTOFromEntity(employeeRepository.save(employee));
+        return employeeMapper.entityToDto(employeeRepository.save(employee));
     }
 
     private boolean isDuplicateName(EmployeeDTO employeeDTO) {
@@ -71,7 +68,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDTO getEmployeeById(String id) {
         Optional<Employee> optionalEmployee = employeeRepository.findById(id);
         if (optionalEmployee.isPresent()) {
-            return employeeMapper.getDTOFromEntity(optionalEmployee.get());
+            return employeeMapper.entityToDto(optionalEmployee.get());
         }
         throw new DataNotFoundException("Data Not Found");
     }

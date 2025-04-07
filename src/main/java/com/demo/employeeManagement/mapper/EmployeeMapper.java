@@ -1,6 +1,4 @@
 package com.demo.employeeManagement.mapper;
-
-
 import com.demo.employeeManagement.dto.EmployeeDTO;
 import com.demo.employeeManagement.entity.Employee;
 import org.mapstruct.Mapper;
@@ -11,9 +9,9 @@ import java.util.List;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface EmployeeMapper {
 
-    EmployeeDTO getDTOFromEntity(Employee employee);
+    Employee dtoToEntity(EmployeeDTO employeeDTO);
 
-    Employee getEntityFromDTO(EmployeeDTO employeeDTO);
+    EmployeeDTO entityToDto(Employee employee);
 
     List<EmployeeDTO> mapList(List<Employee> employee);
 }

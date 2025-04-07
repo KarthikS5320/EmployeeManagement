@@ -20,8 +20,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
     @Query("SELECT e FROM Employee e WHERE e.deleted = false")
     Page<Employee> findAllEmployee(Pageable pageable);
 
-    @Query("SELECT com.demo.employeeManagement.dto.EmployeeNameAndIdDTO(e.id, e.name) FROM Employee e")
-    List<EmployeeNameAndIdDTO> findEmployeeNamesAndIds();
     @Query("SELECT e FROM Employee e WHERE e.department.id = :departmentId")
     List<Employee> findByDepartmentId(String departmentId);
 }
