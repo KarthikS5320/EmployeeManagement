@@ -1,6 +1,5 @@
 package com.demo.employeeManagement.dto;
 
-import com.demo.employeeManagement.entity.Auditable;
 import lombok.Getter;
 import lombok.Setter;
 

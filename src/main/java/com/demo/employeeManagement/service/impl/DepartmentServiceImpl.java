@@ -106,7 +106,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         List<Employee> employees = employeeRepository.findByDepartmentId(departmentId);
         List<EmployeeDTO> employeeDTOs = employees.stream()
-                .map(employeeMapper::getDTOFromEntity)
+                .map(employeeMapper::entityToDto)
                 .collect(Collectors.toList());
 
         DepartmentDTO departmentDTO = departmentMapper.entityToDto(department);
