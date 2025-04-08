@@ -46,6 +46,6 @@ public class Employee extends Auditable {
     private Department department;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "reporting_manager_id")
     private Employee reportingManager;
 }
