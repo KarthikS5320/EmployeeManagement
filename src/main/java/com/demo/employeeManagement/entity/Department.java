@@ -29,6 +29,5 @@ public class Department extends Auditable {
     private Employee departmentHead;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Employee> employee;
 }
