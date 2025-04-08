@@ -2,6 +2,7 @@ package com.demo.employeeManagement.controller;
 
 import com.demo.employeeManagement.dto.ApiResponse;
 import com.demo.employeeManagement.dto.DepartmentDTO;
+import com.demo.employeeManagement.dto.DepartmentResponse;
 import com.demo.employeeManagement.exception.EMException;
 import com.demo.employeeManagement.service.DepartmentService;
 import com.demo.employeeManagement.util.PagingUtils;
@@ -66,8 +67,8 @@ public class DepartmentController {
     }
 
     @GetMapping("/find-all")
-    public ResponseEntity<ApiResponse<List<DepartmentDTO>>> findAll(@RequestParam(required = false) Integer page,
-                                                                    @RequestParam(required = false) Integer pageLength) {
+    public ResponseEntity<ApiResponse<DepartmentResponse>> findAll(@RequestParam(required = false) Integer page,
+                                                                   @RequestParam(required = false) Integer pageLength) {
         ApiResponse apiResponse = new ApiResponse();
         final Pageable pageable = PageRequest.of(pagingUtils.getNextPage(page), pagingUtils.getPageLength(pageLength));
         try {

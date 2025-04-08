@@ -13,6 +13,5 @@ public class DepartmentDTO {
     private String id;
     private String name;
     private Date creationDate;
-    private EmployeeDTO departmentHead;
     private List<EmployeeDTO> employees;
 }
